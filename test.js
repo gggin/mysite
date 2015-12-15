@@ -18,7 +18,7 @@ var jsonParser = bodyParser.json();
 var key = "c5760$%^1d6191202487a94d4()_2d1a";
 var cry = require('./cryptor.js');
 
-var xxx = '
+var xxx = '\
 {\
   "configs": [\
     {\
