@@ -18,22 +18,22 @@ var jsonParser = bodyParser.json();
 var key = "c5760$%^1d6191202487a94d4()_2d1a";
 var cry = require('./cryptor.js');
 
-var xxx = `
-{
-  "configs": [
-    {
-      "server": "www.flysun.us",
-      "server_port": "80",
-      "password": "showmethemoney",
-      "local_port": "10086",
-      "method": "aes-256-cfb",
-      "timeout": "600"
-    }
-  ],
-  "index": "0",
-  "server_history": "123|www.flysun.us"
-}
-`;
+var xxx = '
+{\
+  "configs": [\
+    {\
+      "server": "www.flysun.us",\
+      "server_port": "80",\
+      "password": "showmethemoney",\
+      "local_port": "10086",\
+      "method": "aes-256-cfb",\
+      "timeout": "600"\
+    }\
+  ],\
+  "index": "0",\
+  "server_history": "123|www.flysun.us"\
+}\
+';
 
 app.get('/hello', function(req, res) {
     res.send(cry.encryptAES(xxx, key));
