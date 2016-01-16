@@ -5,6 +5,7 @@
 var crypto = require('crypto');
 
 function decryption(data, key) {
+    if (!key) throw "empty key!";
     var iv = "";
     var clearEncoding = 'utf8';
     var cipherEncoding = 'base64';
@@ -19,6 +20,7 @@ function decryption(data, key) {
 }
 
 function encryption(data, key) {
+    if (!key) throw "empty key!";
     var iv = "";
     var clearEncoding = 'utf8';
     var cipherEncoding = 'base64';
@@ -40,8 +42,16 @@ var result = decryption(encryption("123456", key), key);
 
 //console.log(t1 && t2);
 
+var SHA256 = function (str) {
+    var crypto = require('crypto');
+    var file1_sha256 = crypto.createHash('sha256');
+    file1_sha256.update(str);
+    return file1_sha256.digest('hex');
+};
+
 module.exports = {
     decryptAES :  decryption,
     encryptAES :  encryption,
+    SHA256 : SHA256
     //decryptBlowFish : hello.hello
 };

@@ -18,6 +18,10 @@
   "homepage": "https://github.com/gggin/mysite#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.5",
+    "mongooseadmin": "^1.0.5",
+    "uuid": "^2.0.1"
   }
 }
