@@ -1,3 +1,5 @@
+create database shadowsocks;
+use shadowsocks;
 SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE `user` (

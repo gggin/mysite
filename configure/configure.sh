@@ -18,3 +18,6 @@ wget https://npmjs.org/install.sh --no-check-certificate
 chmod 777 install.sh
 ./install.sh
 
+#安装mysql
+sudo apt-get install mysql-server mysql-client
+
