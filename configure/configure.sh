@@ -15,4 +15,4 @@ sudo service mysql start
 git clone -b manyuser https://github.com/gggin/shadowsocks.git
 cd shadowsocks
 cd shadowsocks
-sudo nohup python server.py
+sudo nohup python server.py &
