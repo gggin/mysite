@@ -1,7 +1,10 @@
 #!/bin/bash
 sudo apt-get update
 #安装python git nodejs npm等工具
-sudo apt-get install git-core curl build-essential openssl libssl-dev python-pip python-dev mysql-server mysql-client nodejs npm
+sudo apt-get install git-core curl build-essential openssl libssl-dev python-pip python-dev mysql-server mysql-client
+
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install nodejs
 
 USERNAME="root"
 PASSWORD="123456"
