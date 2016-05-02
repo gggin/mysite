@@ -12,6 +12,7 @@ var User = new mongoose.Schema(
         salt: String,
         mobile: String,
         registerTime: {type: Number, default: Date.now},
+        email: String,
     }
 );
 
