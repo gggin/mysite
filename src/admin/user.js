@@ -33,11 +33,16 @@ router.use(session({
     })
 }));
 
+var baucis = require('baucis');
+baucis.rest('User');
+router.use('/rest', baucis());
+
 router.post("/login", function (req, res, next) {
     try {
         var u = req.body.username;
         var p = req.body.password;
         res.setHeader('Content-Type', 'application/json');
+        req.session.login = true;
         res.send(JSON.stringify({success: true}));
     } catch(e) {
         res.send(403);
