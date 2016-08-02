@@ -15,21 +15,30 @@ function en_(data) {
     return window.enp(pub, data);
 }
 
+function eed(data, key) {
+    return window.easyDe(data, key);
+}
+
+function een(data, key) {
+    return window.easyEn(data, key);
+}
+
+var ran = ranStr_();
 
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:17777/",
+    "url": "http://localhost:17777/api",
     "method": "GET",
     "headers": {
         "cache-control": "no-cache",
         //"postman-token": "cc771975-7f11-1947-485c-724aaf749a3c",
         "content-type": "application/x-www-form-urlencoded",
-        "autoken": en_(ranStr_())
+        "autoken": en_(ran)
     },
     "data": {
-        "email": "admin@example.com",
-        "password": "admin"
+        //"email": "admin@example.com",
+        //"password": "admin"
         //"email": "test@example.com",
         //"password": "test"
     }
@@ -37,7 +46,8 @@ var settings = {
 
 
 $.ajax(settings).done(function (response) {
-    console.log(response);
+    var re = JSON.parse(eed(response, ran));
+    console.log(re);
 });
 
 

@@ -37,32 +37,48 @@ app.use(session({
     secret: config.ADMIN_SECRECT,
     store: new MongoStore({
         url: config.DB_PATH
-    })
+    }),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
 }));
 
+var logger = require('morgan');
 
+app.use(logger());
 
-app.use('/', function (req, res, next) {
-    console.log(req.headers);
-    console.log(req.session);
-    console.log(req.body);
-
-    if (!req.headers.autoken && !req.session.autoken) {
-        res.json({ error: 'miss token' }).end();
-    } else if (req.headers.autoken && !req.session.autoken) {
-        req.session.autoken = rsa.decryptByPrivateKey(pri, req.headers.autoken);
-    } else {
-        req.autoken = req.session.autoken;
-        next();
-    }
+app.all('*', function (req, res, next) {
+  console.log(req.session.autoken);
+  console.log(req.sessionID);
+  next(); // pass control to the next handler
 });
 
-app.get('/', function(req, res) {
-    var data= one.easyEn(JSON.stringify({hello:123}), req.autoken);
+app.use('/static', express.static('client'));
+
+app.use('/api', function (req, res, next) {
+    //if (!req.headers.autoken && !req.session.autoken) {
+   //     res.json({ error: 'miss token' }).end();
+   // } else if (req.headers.autoken && !req.session.autoken) {
+        req.session.autoken = rsa.decryptByPrivateKey(pri, req.headers.autoken);
+        req.autoken = req.session.autoken;
+        next();
+   // } else {
+   //     req.autoken = req.session.autoken;
+   //     next();
+   // }
+});
+
+app.get('/api', function(req, res) {
+    var data = one.easyEn(JSON.stringify({ result: 1 }), req.autoken);
     res.write(data);
     res.end();
 });
 
-app.use('/static', app.static('../client'));
+app.get('/api/users', function (req, res) {
+    var data = one.easyEn(JSON.stringify({ hello: 123 }), req.autoken);
+    res.write(data);
+    res.end();
+});
+
 
 app.listen(17777);

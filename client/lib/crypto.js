@@ -78,6 +78,8 @@
 	console.log(deResult)
 	window.enp = rsa.encryptByPublicKey;
 	window.lop = rsa.loadPublicKeyFromString;
+	window.easyEn = lib.easyEn;
+	window.easyDe = lib.easyDe;
 
 
 

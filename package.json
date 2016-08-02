@@ -27,6 +27,7 @@
     "express-session": "^1.13.0",
     "mongoose": "^4.4.14",
     "mongoose-express-rest": "^0.3.5",
+    "morgan": "^1.7.0",
     "oneline-crypto": "^1.2.0"
   }
 }
